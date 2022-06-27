@@ -21,5 +21,9 @@ module.exports = {
         }),
         // 删除的是ouput path 里配置的那个输出文件的文件夹
         new CleanWebpackPlugin(),
-    ]
+    ],
+    devServer: {
+        port: 3000, // 端口号
+        open: true
+    }
 }
