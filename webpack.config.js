@@ -58,7 +58,33 @@ module.exports = {
                 generator: {
                     filename: '[hash:6][txt]'
                 }
-            }
+            },
+            // 字体处理
+            {// 字体图标 不配置也可以  css loader 也会处理的
+                // webpack 5
+                test: /\.(eot|svg|ttf|woff|woff2)$/, // 匹配所有的字体图标的文件
+                type: 'asset', // 文件直接输出
+                generator: { // 生产器
+                    filename: 'font-[name].[hash:6][ext]'
+                },
+                parser: { // 解析器 规则
+                    dataUrlCondition: { // dataUrl的情况
+                        maxSize: 1 * 1024,
+                        // maxSize 限制最大值
+                    },
+                },
+            },
+            // 高版本js语法打包成低版本js语法
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/, // 排除在外 
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'] // 预设:转码规则(用bable开发环境本来预设的)
+                    }
+                }
+            },
         ]
     }
 }
