@@ -45,6 +45,20 @@ module.exports = {
                 // less 讲 less 语法 转换成 css
                 use: ['style-loader', 'css-loader', 'less-loader']
             },
+            // 图片处理
+            {
+                test: /\.(png|jpg|gif)$/i,
+                // 自动选择，大于2k的图片用直接复制到dist文件下，小于8k的转换为base64格式
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 2 * 1024,
+                    },
+                },
+                generator: {
+                    filename: '[hash:6][txt]'
+                }
+            }
         ]
     }
 }
