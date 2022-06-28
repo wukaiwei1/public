@@ -16,7 +16,7 @@ import './assets/fonts/iconfont.css'
 import imgUrl from './assets/1.gif';
 
 // 引入vue文件
-import './main.vue'
+import './index.vue'
 
 let img = document.createElement('img');
 img.src = imgUrl;
